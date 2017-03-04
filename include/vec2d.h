@@ -8,6 +8,11 @@ namespace ajx {
     template <class T>
     class vec2d : boost::operators< vec2d<T> > {
         public:
+        	vec2d() {
+        		this->m_x = 0;
+        		this->m_y = 0;
+        	};
+
             vec2d(T t1, T t2) {
 				this->m_x = t1;
 				this->m_y = t2;
