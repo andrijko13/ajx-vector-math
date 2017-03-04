@@ -4,7 +4,7 @@ The ajx namespace provides classes for all basic linear algebra vector/matrix ne
 
 #Installing
 
-Insalling ajx and all of it's libraries is easy. Just making a build directory, and run cmake/make/make install!
+Installing ajx and all of it's libraries is easy. Just making a build directory, and run cmake/make/make install!
 
 ```bash
 mkdir build; cd build
