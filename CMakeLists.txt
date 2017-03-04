@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 project (ajx)
 
-set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_COMPILER "g++")
 
 set(CMAKE_MACOSX_RPATH 1)
 
