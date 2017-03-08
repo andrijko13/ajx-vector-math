@@ -32,11 +32,11 @@ namespace ajx {
             };
 
             static vec2d<T> ZeroVector() {
-				vec2d<T> myvec;
+            	vec2d<T> myvec;
 				myvec.m_x = 0;
 				myvec.m_y = 0;
 				return myvec;
-			};
+		    }
 
 
             bool operator<(const vec2d<T>& x) const {
@@ -122,12 +122,34 @@ namespace ajx {
 		    	return myvec;
 		    }
 
+		    vec2d<T>& operator /(const T& val) {
+		    	this->m_x /= val;
+		    	this->m_y /= val;
+		    	return *this;
+		    }
+
+		    friend vec2d<T>& operator / (const T& val, const vec2d<T>& V) {
+		    	vec2d<T> myvec;
+		    	myvec->m_x = val / V->m_x;
+		    	myvec->m_y = val / V->m_y;
+		    	return myvec;
+		    }
+
+		    bool equals(const vec2d<T>& x) const {
+		    	T resultx = x.m_x - this->m_x;
+		    	T resulty = x.m_y - this->m_y;
+		    	resultx = (resultx < 0) ? -1 * resultx : resultx;
+		    	resulty = (resulty < 0) ? -1 * resulty : resulty;
+		    	if (resultx < epsilon && resulty < epsilon) return true;
+		    	return false;
+		    };
+
             T x() { return m_x; };
             T y() { return m_y; };
-            T dot(const vec2d<T> &U) { return (m_x * U.m_x + m_y * U.m_y); };
-            T cross(const vec2d<T> &U) { return (m_x*U.m_y - m_y*U.m_x); };
-            T length() { return std::sqrt(m_x*m_x + m_y*m_y); };
-            T lengthSquared() { return (m_x*m_x + m_y*m_y); };
+            T dot(const vec2d<T> &U) const { return (m_x * U.m_x + m_y * U.m_y); };
+            T cross(const vec2d<T> &U) const { return (m_x*U.m_y - m_y*U.m_x); };
+            T length() const { return std::sqrt(m_x*m_x + m_y*m_y); };
+            T lengthSquared() const { return (m_x*m_x + m_y*m_y); };
 
             vec2d<T>& normalized() {
             	vec2d<T> myvec;
