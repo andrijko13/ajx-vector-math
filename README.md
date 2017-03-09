@@ -1,3 +1,8 @@
+[![Version](https://img.shields.io/badge/Version-1.0.1-blue.svg)](https://github.com/andriko13/ajx-vector-math)
+[![Build Status](https://travis-ci.org/andriko13/ajx-vector-math.svg?branch=master)](https://travis-ci.org/andriko13/ajx-vector-math)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/andriko13/ajx-vector-math/issues)
+
+
 #About
 
 The ajx namespace provides classes for all basic linear algebra vector/matrix needs. Initially designed for use by game developers
