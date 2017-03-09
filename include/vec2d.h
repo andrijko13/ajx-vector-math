@@ -2,11 +2,10 @@
 #define AJX_VEC2D
 
 #include <boost/operators.hpp>
+#include "constants.h"
 #include <cmath>
 
 namespace ajx {
-
-	double epsilon = 0.0001;
 
     template <class T>
     class vec2d : boost::operators< vec2d<T> > {
@@ -40,7 +39,7 @@ namespace ajx {
 
 
             bool operator<(const vec2d<T>& x) const {
-            	return ((this->m_x * this->m_x + this->m_y + this->m_y) < (x.m_x * x.m_x + x.m_y * x.m_y));
+            	return ((this->m_x * this->m_x + this->m_y * this->m_y) < (x.m_x * x.m_x + x.m_y * x.m_y));
             };
 
 		    bool operator==(const vec2d<T>& x) const {
@@ -109,30 +108,26 @@ namespace ajx {
 		    	return *this;
 		    };
 
-		    vec2d<T>& operator *(const T& val) {
-		    	this->m_x *= val;
-		    	this->m_y *= val;
-		    	return *this;
+		    vec2d<T> operator *(const T& val) {
+		    	vec2d<T> result(this->m_x * val, this->m_y *val);
+		    	return result;
 		    }
 
-		    friend vec2d<T>& operator * (const T& val, const vec2d<T>& V) {
+		    friend vec2d<T> operator * (const T& val, const vec2d<T>& V) {
 		    	vec2d<T> myvec;
 		    	myvec->m_x = V->m_x * val;
 		    	myvec->m_y = V->m_y * val;
 		    	return myvec;
 		    }
 
-		    vec2d<T>& operator /(const T& val) {
+		    vec2d<T>& operator /= (const T& val) {
 		    	this->m_x /= val;
 		    	this->m_y /= val;
-		    	return *this;
 		    }
 
-		    friend vec2d<T>& operator / (const T& val, const vec2d<T>& V) {
-		    	vec2d<T> myvec;
-		    	myvec->m_x = val / V->m_x;
-		    	myvec->m_y = val / V->m_y;
-		    	return myvec;
+		    vec2d<T> operator /(const T& val) {
+		    	vec2d<T> result(this->m_x / val, this->m_y / val);
+		    	return result;
 		    }
 
 		    bool equals(const vec2d<T>& x) const {
@@ -151,13 +146,13 @@ namespace ajx {
             T length() const { return std::sqrt(m_x*m_x + m_y*m_y); };
             T lengthSquared() const { return (m_x*m_x + m_y*m_y); };
 
-            vec2d<T>& normalized() {
+            vec2d<T> normalized() {
             	vec2d<T> myvec;
             	T veclength = this->length();
             	if (veclength < epsilon) return *this;
             	myvec.m_x = m_x/veclength;
             	myvec.m_y = m_y/veclength;
-            	return &myvec;
+            	return myvec;
             };
 
 
