@@ -27,9 +27,9 @@ To run the full test suite, you can use `make test` inside the build directory
 
 # Usage
 
-Make sure to import the headers for the classes you are using, and use away! Examples are located in `/src/example/main.cpp`
+Make sure to import the headers for the classes you are using, and use away! Examples are located in `/src/examples`
 
-Once you compile the library, you can run the example from the `/binaries` folder
+Once you compile the library, you can run the examples from the `/binaries` folder
 
 ```c++
 #include <ajx/vec2d.h>
