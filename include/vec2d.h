@@ -31,10 +31,13 @@ namespace ajx {
             };
 
             static vec2d<T> ZeroVector() {
-            	vec2d<T> myvec;
-				myvec.m_x = 0;
-				myvec.m_y = 0;
+            	vec2d<T> myvec(0,0);
 				return myvec;
+		    }
+
+		    static vec2d<T> VectorWith(const T &x, const T &y) {
+		    	vec2d<T> myvec(x,y);
+		    	return myvec;
 		    }
 
 
@@ -138,6 +141,12 @@ namespace ajx {
 		    	if (resultx < epsilon && resulty < epsilon) return true;
 		    	return false;
 		    };
+
+		 	static bool approx(const T &x, const T &y) {
+		 		T result = x - y;
+		 		result = (result < 0) ? result * -1 : result;
+		 		return (result < epsilon);
+		 	}
 
             T x() { return m_x; };
             T y() { return m_y; };
