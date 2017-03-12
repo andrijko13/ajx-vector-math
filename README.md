@@ -1,6 +1,7 @@
 [![Version](https://img.shields.io/badge/Version-1.0.1-blue.svg)](https://github.com/andriko13/ajx-vector-math)
 [![Build Status](https://travis-ci.org/andriko13/ajx-vector-math.svg?branch=master)](https://travis-ci.org/andriko13/ajx-vector-math)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/andriko13/ajx-vector-math/issues)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat)](https://github.com/andriko13/ajx-vector-math/issues)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/andriko13/ajx-vector-math/blob/master/LICENSE.txt)
 
 
 #About
@@ -26,9 +27,9 @@ To run the full test suite, you can use `make test` inside the build directory
 
 # Usage
 
-Make sure to import the headers for the classes you are using, and use away! Examples are located in `/src/example/main.cpp`
+Make sure to import the headers for the classes you are using, and use away! Examples are located in `/src/examples`
 
-Once you compile the library, you can run the example from the `/binaries` folder
+Once you compile the library, you can run the examples from the `/binaries` folder
 
 ```c++
 #include <ajx/vec2d.h>
