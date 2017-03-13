@@ -1,6 +1,6 @@
 #define BOOST_TEST_DYN_LINK
 
-#define BOOST_TEST_MODULE "Main Test Module"
+#define BOOST_TEST_MODULE "Vec3D Test Module"
 #include <boost/test/unit_test.hpp>
 
 #include "vec3d.h"
