@@ -123,9 +123,16 @@ namespace ajx {
 		    	return myvec;
 		    }
 
+		    vec2d<T>& operator *= (const T& val) {
+		    	this->m_x *= val;
+		    	this->m_y *= val;
+		    	return *this;
+		    }
+
 		    vec2d<T>& operator /= (const T& val) {
 		    	this->m_x /= val;
 		    	this->m_y /= val;
+		    	return *this;
 		    }
 
 		    vec2d<T> operator /(const T& val) {
