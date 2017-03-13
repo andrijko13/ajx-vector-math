@@ -210,4 +210,20 @@ BOOST_AUTO_TEST_CASE( times_const )
 
   BOOST_CHECK(result2.x() == -66);
   BOOST_CHECK(result2.y() == 22);
+
+  result1 *= -1;
+  BOOST_CHECK(result1 == result2);
+}
+
+BOOST_AUTO_TEST_CASE( divides_const )
+{
+  ajx::vec2d<int> first(33,-11);
+  ajx::vec2d<int> result1 = first / 11;
+
+  BOOST_CHECK(result1.x() == 3);
+  BOOST_CHECK(result1.y() == -1);
+
+  result1 /= -1;
+  BOOST_CHECK(result1.x() == -3);
+  BOOST_CHECK(result1.y() == 1);
 }
