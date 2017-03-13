@@ -133,3 +133,81 @@ BOOST_AUTO_TEST_CASE ( times_equals )
   BOOST_CHECK(second.x() == -3);
   BOOST_CHECK(second.y() == 7);
 }
+
+BOOST_AUTO_TEST_CASE ( divide_equals )
+{
+  ajx::vec2d<int> first(20,-20);
+  first /= ajx::vec2d<int>::VectorWith(5,5);
+
+  BOOST_CHECK(first.x() == 4);
+  BOOST_CHECK(first.y() == -4);
+}
+
+BOOST_AUTO_TEST_CASE( modulus_equals )
+{
+  ajx::vec2d<int> first(20,-20);
+  first %= ajx::vec2d<int>::VectorWith(5,3);
+
+  BOOST_CHECK(first.x() == 0);
+  BOOST_CHECK(first.y() == -2);
+}
+
+BOOST_AUTO_TEST_CASE( or_equals )
+{
+  ajx::vec2d<int> first(0,0);
+  first |= ajx::vec2d<int>::VectorWith(10,-10);
+
+  BOOST_CHECK(first.x() == 10);
+  BOOST_CHECK(first.y() == -10);
+}
+
+BOOST_AUTO_TEST_CASE( and_equals )
+{
+  ajx::vec2d<int> first(0xFFFFFFFF,0xFFFFFFFF);
+  first &= ajx::vec2d<int>::VectorWith(0,1);
+
+  BOOST_CHECK(first.x() == 0);
+  BOOST_CHECK(first.y() == 1);
+}
+
+BOOST_AUTO_TEST_CASE( xor_equals )
+{
+  ajx::vec2d<int> first(20,-20);
+  first ^= ajx::vec2d<int>::VectorWith(-73,98);
+  first ^= ajx::vec2d<int>::VectorWith(-73,98);
+
+
+  BOOST_CHECK(first.x() == 20);
+  BOOST_CHECK(first.y() == -20);
+}
+
+BOOST_AUTO_TEST_CASE( plusplus )
+{
+  ajx::vec2d<int> first(0,-1);
+  first++;
+
+  BOOST_CHECK(first.x() == 1);
+  BOOST_CHECK(first.y() == 0);
+}
+
+BOOST_AUTO_TEST_CASE( minusminus )
+{
+  ajx::vec2d<int> first(0,-1);
+  first--;
+
+  BOOST_CHECK(first.x() == -1);
+  BOOST_CHECK(first.y() == -2);
+}
+
+BOOST_AUTO_TEST_CASE( times_const )
+{
+  ajx::vec2d<int> first(33,-11);
+  ajx::vec2d<int> result1 = first * 2;
+  ajx::vec2d<int> result2 = -2 * first;
+
+  BOOST_CHECK(result1.x() == 66);
+  BOOST_CHECK(result1.y() == -22);
+
+  BOOST_CHECK(result2.x() == -66);
+  BOOST_CHECK(result2.y() == 22);
+}
