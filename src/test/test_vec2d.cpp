@@ -1,12 +1,12 @@
 #define BOOST_TEST_DYN_LINK
 
-#define BOOST_TEST_MODULE "Main Test Module"
+#define BOOST_TEST_MODULE "Vec2D Test Module"
 #include <boost/test/unit_test.hpp>
 
 #include "vec2d.h"
 #include <iostream>
 
-BOOST_AUTO_TEST_CASE( constructors )
+BOOST_AUTO_TEST_CASE( constructors_and_getters )
 {
 	ajx::vec2d<int> vec1;
 	ajx::vec2d<int> vec2;
@@ -226,4 +226,55 @@ BOOST_AUTO_TEST_CASE( divides_const )
   result1 /= -1;
   BOOST_CHECK(result1.x() == -3);
   BOOST_CHECK(result1.y() == 1);
+}
+
+BOOST_AUTO_TEST_CASE ( dot )
+{
+  ajx::vec2d<int> first(10,10);
+  ajx::vec2d<int> second(20,20);
+  int result = first.dot(second);
+
+  BOOST_CHECK(result == 400);
+}
+
+BOOST_AUTO_TEST_CASE ( cross )
+{
+  ajx::vec2d<int> first(10,10);
+  ajx::vec2d<int> second(10,20);
+  int result = first.cross(second);
+
+  BOOST_CHECK(result == 100);
+}
+
+BOOST_AUTO_TEST_CASE ( length )
+{
+  ajx::vec2d<int> first(0,-10);
+  ajx::vec2d<int> second(3,4);
+
+  BOOST_CHECK(first.length() == 10);
+  BOOST_CHECK(second.length() == 5);
+}
+
+BOOST_AUTO_TEST_CASE ( length_square )
+{
+  ajx::vec2d<int> first(0,-10);
+  ajx::vec2d<int> second(3,4);
+
+  BOOST_CHECK(first.lengthSquared() == 100);
+  BOOST_CHECK(second.lengthSquared() == 25);
+}
+
+BOOST_AUTO_TEST_CASE ( normalized )
+{
+  ajx::vec2d<int> first(0,-10);
+  ajx::vec2d<double> second(-4,4);
+
+  first = first.normalized();
+  second = second.normalized();
+
+  BOOST_CHECK(first.x() == 0);
+  BOOST_CHECK(first.y() == -1);
+
+  BOOST_CHECK(ajx::approx(second.x(), -0.707107));
+  BOOST_CHECK(ajx::approx(second.y(), 0.707107));
 }
