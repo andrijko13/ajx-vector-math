@@ -118,8 +118,8 @@ namespace ajx {
 
 		    friend vec2d<T> operator * (const T& val, const vec2d<T>& V) {
 		    	vec2d<T> myvec;
-		    	myvec->m_x = V->m_x * val;
-		    	myvec->m_y = V->m_y * val;
+		    	myvec.m_x = V.m_x * val;
+		    	myvec.m_y = V.m_y * val;
 		    	return myvec;
 		    }
 
@@ -141,12 +141,6 @@ namespace ajx {
 		    	if (resultx < epsilon && resulty < epsilon) return true;
 		    	return false;
 		    };
-
-		 	static bool approx(const T &x, const T &y) {
-		 		T result = x - y;
-		 		result = (result < 0) ? result * -1 : result;
-		 		return (result < epsilon);
-		 	}
 
             T x() { return m_x; };
             T y() { return m_y; };
