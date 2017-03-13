@@ -19,3 +19,25 @@ BOOST_AUTO_TEST_CASE ( approx )
   BOOST_CHECK (ajx::approx(a,b));
   BOOST_CHECK (!ajx::approx(b,c));
 }
+
+BOOST_AUTO_TEST_CASE ( rad2deg )
+{
+  double radians1 = M_PI;
+  double radians2 = M_PI / 2;
+  double radians3 = M_PI * 8 / 3;
+
+  BOOST_CHECK ( ajx::approx( ajx::rad2deg(radians1), 180.0 ) );
+  BOOST_CHECK ( ajx::approx( ajx::rad2deg(radians2), 90.0 ) );
+  BOOST_CHECK ( ajx::approx( ajx::rad2deg(radians3), 480.0 ) );
+}
+
+BOOST_AUTO_TEST_CASE ( deg2rad )
+{
+  double degrees1 = 90;
+  double degrees2 = 180;
+  double degrees3 = 270;
+
+  BOOST_CHECK ( ajx::approx( ajx::deg2rad(degrees1), M_PI/2.0 ) );
+  BOOST_CHECK ( ajx::approx( ajx::deg2rad(degrees2), M_PI ) );
+  BOOST_CHECK ( ajx::approx( ajx::deg2rad(degrees3), 3.0/2.0*M_PI ) );
+}

@@ -12,6 +12,14 @@ namespace ajx {
  		result = (result < 0) ? result * -1 : result;
  		return (result < epsilon);
 	}
+
+	static double rad2deg(const double &radians) {
+		return (radians/M_PI*180.0);
+	}
+
+	static double deg2rad(const double &degrees) {
+		return (degrees/180.0*M_PI);
+	}
 }
 
 #endif
