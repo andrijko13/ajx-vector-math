@@ -165,6 +165,11 @@ namespace ajx {
             	return myvec;
             };
 
+            vec2d<T> rotatedBy( const double &angle ) {
+            	vec2d<T> myvec(this->m_x * cos(angle) - this->m_y * sin(angle), this->m_x * sin(angle) + this->m_y * cos(angle));
+            	return myvec;
+            }
+
 
 
         protected:
