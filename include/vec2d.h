@@ -149,14 +149,14 @@ namespace ajx {
 		    	return false;
 		    };
 
-            T x() { return m_x; };
-            T y() { return m_y; };
+            T x() const { return m_x; };
+            T y() const { return m_y; };
             T dot(const vec2d<T> &U) const { return (m_x * U.m_x + m_y * U.m_y); };
             T cross(const vec2d<T> &U) const { return (m_x*U.m_y - m_y*U.m_x); };
             T length() const { return std::sqrt(m_x*m_x + m_y*m_y); };
             T lengthSquared() const { return (m_x*m_x + m_y*m_y); };
 
-            vec2d<T> normalized() {
+            vec2d<T> normalized() const {
             	vec2d<T> myvec;
             	T veclength = this->length();
             	if (veclength < epsilon) return *this;
@@ -165,10 +165,17 @@ namespace ajx {
             	return myvec;
             };
 
-            vec2d<T> rotatedBy( const double &angle ) {
+            vec2d<T> rotatedBy( const double &angle ) const {
             	vec2d<T> myvec(this->m_x * cos(angle) - this->m_y * sin(angle), this->m_x * sin(angle) + this->m_y * cos(angle));
             	return myvec;
             }
+
+            //template <typename U>
+            // vec2d<T> rotatedByAbout ( const double &angle, const vec2d<T> &aboutVec) const {
+            // 	T newX = (this->m_x-aboutVec.m_x) * cos(angle) - (this->m_y-aboutVec.m_y) * sin(angle) + this->m_x;
+            // 	T newY = -1*(this->m_x-aboutVec.m_x) * sin(angle) + (this->m_y-aboutVec.m_y) * cos(angle) + this->m_y;
+            // 	return VectorWith(newX, newY);
+            // }
 
 
 
