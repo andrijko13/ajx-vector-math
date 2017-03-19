@@ -170,12 +170,12 @@ namespace ajx {
             	return myvec;
             }
 
-            //template <typename U>
-            // vec2d<T> rotatedByAbout ( const double &angle, const vec2d<T> &aboutVec) const {
-            // 	T newX = (this->m_x-aboutVec.m_x) * cos(angle) - (this->m_y-aboutVec.m_y) * sin(angle) + this->m_x;
-            // 	T newY = -1*(this->m_x-aboutVec.m_x) * sin(angle) + (this->m_y-aboutVec.m_y) * cos(angle) + this->m_y;
-            // 	return VectorWith(newX, newY);
-            // }
+            vec2d<T> rotatedByAbout ( const double &angle, const vec2d<T> &aboutVec) const {
+            	vec2d<T> shiftedVec(this->m_x - aboutVec.m_x, this->m_y - aboutVec.m_y); // shift
+            	shiftedVec = shiftedVec.rotatedBy(angle); // rotate
+            	shiftedVec += VectorWith(aboutVec.m_x, aboutVec.m_y); // shift back
+            	return shiftedVec;
+            }
 
 
 

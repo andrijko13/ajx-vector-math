@@ -298,18 +298,23 @@ BOOST_AUTO_TEST_CASE ( rotatedBy )
   BOOST_CHECK(ajx::approx(17.62384794026989, third.y()));
 }
 
-// BOOST_AUTO_TEST_CASE ( rotatedByAbout )
-// {
-//   ajx::vec2d<double> first(1.0,1.0);
-//   ajx::vec2d<double> second(1.0,0.0);
+BOOST_AUTO_TEST_CASE ( rotatedByAbout )
+{
+  ajx::vec2d<double> first(1.0,1.0);
+  ajx::vec2d<double> second(-4.0,4.0);
 
-//   ajx::vec2d<double> about(1,1);
+  ajx::vec2d<double> about(1,1);
+  ajx::vec2d<double> about2(-4.0,2.0);
+  ajx::vec2d<double> about3(5.0,5.0);
 
-//   first = first.rotatedByAbout(M_PI/2.0, about);
-//   second = second.rotatedByAbout(M_PI/2.0, about);
+  first = first.rotatedByAbout(M_PI/2.0, about);
+  ajx::vec2d<double> third = second.rotatedByAbout(M_PI/2.0, about3);
+  second = second.rotatedByAbout(M_PI, about2);
 
-//   BOOST_CHECK(ajx::approx(first.x(), 1.0));
-//   BOOST_CHECK(ajx::approx(first.y(),  1.0));
-//   BOOST_CHECK(ajx::approx(second.x(), 2.0));
-//   BOOST_CHECK(ajx::approx(second.y(),  1.0));
-// }
+  BOOST_CHECK(ajx::approx(first.x(),  1.0));
+  BOOST_CHECK(ajx::approx(first.y(),  1.0));
+  BOOST_CHECK(ajx::approx(second.x(), -4.0));
+  BOOST_CHECK(ajx::approx(second.y(), 0.0));
+  BOOST_CHECK(ajx::approx(third.x(),  6.0));
+  BOOST_CHECK(ajx::approx(third.y(),  -4.0));
+}
