@@ -4,11 +4,11 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/andriko13/ajx-vector-math/blob/master/LICENSE.txt)
 
 
-#About
+# About
 
 The ajx namespace provides classes for all basic linear algebra vector/matrix needs. Initially designed for use by game developers
 
-#Installing
+# Installing
 
 Installing ajx and all of it's libraries is easy. Just make a build directory, and run cmake/make/make install!
 
@@ -19,7 +19,7 @@ cmake -j4 .. && make && make install
 
 Building the project requires the system to have `boost` library installed, as well as a c++ compiler (g++)
 
-##Running Tests
+## Running Tests
 
 You can run the test suite to make sure that the library is functioning. Individual tests can be found in `/binaries/tests/`.
 
