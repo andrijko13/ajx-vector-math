@@ -52,3 +52,22 @@ BOOST_AUTO_TEST_CASE( multiplication )
   BOOST_CHECK_EQUAL(result2.y(), 40);
   BOOST_CHECK_EQUAL(result2.z(), 60);
 }
+
+BOOST_AUTO_TEST_CASE( VectorWith)
+{
+  ajx::vec3d<int> vec1 = ajx::vec3d<int>::VectorWith(5, 10, 15);
+  ajx::vec3d<int> vec2(10,20, 30);
+  ajx::vec3d<int> vec3 = ajx::vec3d<int>::VectorWith(1, 2, 3);
+
+  BOOST_CHECK(vec1.x() == 5);
+  BOOST_CHECK(vec1.y() == 10);
+  BOOST_CHECK(vec1.z() == 15);
+
+  BOOST_CHECK(vec2.x() == ajx::vec3d<int>::VectorWith(10,10,10).x());
+  BOOST_CHECK(vec2.y() == ajx::vec3d<int>::VectorWith(10,20,20).y());
+  BOOST_CHECK(vec2.z() == ajx::vec3d<int>::VectorWith(30,30,30).z());
+
+  BOOST_CHECK(vec3.x() == 1);
+  BOOST_CHECK(vec3.y() == 2);
+  BOOST_CHECK(vec3.z() == 3);
+}
