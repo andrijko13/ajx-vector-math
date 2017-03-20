@@ -41,6 +41,11 @@ namespace ajx {
 				return myvec;
 		    }
 
+		    static vec3d<T> VectorWith(const T &x, const T &y, const T &z) {
+		    	vec3d<T> myvec(x,y,z);
+		    	return myvec;
+		    }
+
 
             bool operator<(const vec3d<T>& x) const {
             	return ((this->lengthSquared()) < (x.lengthSquared()));
