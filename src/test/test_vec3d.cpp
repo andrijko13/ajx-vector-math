@@ -83,3 +83,15 @@ BOOST_AUTO_TEST_CASE( cross )
   BOOST_CHECK(result.y() == -2);
   BOOST_CHECK(result.z() == -7);
 }
+
+BOOST_AUTO_TEST_CASE( rotateAboutAxis )
+{
+  ajx::vec3d<double> vec1(1,-1,0);
+  ajx::vec3d<double> axis(1,1,1);
+
+  vec1 = vec1.rotateAboutAxis(M_PI/3, axis);
+
+  BOOST_CHECK(ajx::approx(vec1.x(), 1.0));
+  BOOST_CHECK(ajx::approx(vec1.y(), 0.0));
+  BOOST_CHECK(ajx::approx(vec1.z(), -1.0));
+}
