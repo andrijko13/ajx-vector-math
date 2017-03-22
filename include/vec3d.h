@@ -184,6 +184,15 @@ namespace ajx {
             	return myvec;
             };
 
+            vec3d<T> rotateAboutAxis(const double &angle, const vec3d<T> &N)
+            {
+            	vec3d<T> normal = N;
+            	normal = normal.normalized();
+            	vec3d<T> R(this->m_x, this->m_y, this->m_z);
+            	vec3d<T> newVec = (R * (cos(angle)) + ((normal.cross(R)) * (sin(angle))));
+            	return newVec;
+            }
+
 
 
         protected:
