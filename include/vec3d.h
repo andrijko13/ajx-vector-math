@@ -128,7 +128,7 @@ namespace ajx {
 		    	return *this;
 		    };
 
-		    vec3d<T> operator *(const T& val) {
+		    vec3d<T> operator *(const T& val) const {
 		    	vec3d<T> result(this->m_x * val, this->m_y * val, this->m_z * val);
 		    	return result;
 		    }
@@ -148,7 +148,7 @@ namespace ajx {
 		    	return *this;
 		    };
 
-		    vec3d<T> operator / (const T& val) {
+		    vec3d<T> operator / (const T& val) const {
 		    	vec3d<T> result(this->m_x / val, this->m_y / val, this->m_z / val);
 		    	return result;
 		    }
@@ -169,17 +169,17 @@ namespace ajx {
             T z() { return m_z; };
             T dot(const vec3d<T> &U) const { return (m_x * U.m_x + m_y * U.m_y + m_z * U.m_z); };
             //cross will return another vector
-            vec3d<T> cross(const vec3d<T> &U) const { 
+            vec3d<T> cross(const vec3d<T> &U) const {
             	vec3d<T> result(m_y*U.m_z - m_z*U.m_y, m_z*U.m_x - m_x*U.m_z, m_x*U.m_y - m_y*U.m_x);
-            	return result; 
+            	return result;
             };
             T length() const { return std::sqrt(m_x*m_x + m_y*m_y + m_z*m_z); };
             T lengthSquared() const { return (m_x*m_x + m_y*m_y + m_z*m_z); };
 
-            vec3d<T> normalized() {
+            vec3d<T> normalized() const {
             	vec3d<T> myvec(this->m_x, this->m_y, this->m_z);
             	T veclength = this->length();
-            	if (veclength < epsilon) return *this;
+            	if (veclength < epsilon) return myvec;
             	myvec /= veclength;
             	return myvec;
             };
