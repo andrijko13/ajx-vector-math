@@ -71,3 +71,15 @@ BOOST_AUTO_TEST_CASE( VectorWith)
   BOOST_CHECK(vec3.y() == 2);
   BOOST_CHECK(vec3.z() == 3);
 }
+
+BOOST_AUTO_TEST_CASE( cross )
+{
+  ajx::vec3d<int> vec1(1,5,1);
+  ajx::vec3d<int> vec2(2,3,4);
+
+  ajx::vec3d<int> result = vec1.cross(vec2);
+
+  BOOST_CHECK(result.x() == 17);
+  BOOST_CHECK(result.y() == -2);
+  BOOST_CHECK(result.z() == -7);
+}

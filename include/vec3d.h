@@ -168,7 +168,11 @@ namespace ajx {
             T y() { return m_y; };
             T z() { return m_z; };
             T dot(const vec3d<T> &U) const { return (m_x * U.m_x + m_y * U.m_y + m_z * U.m_z); };
-            //todo: T cross(const vec3d<T> &U) const { return (m_x*U.m_y - m_y*U.m_x); };
+            //cross will return another vector
+            vec3d<T> cross(const vec3d<T> &U) const { 
+            	vec3d<T> result(m_y*U.m_z - m_z*U.m_y, m_z*U.m_x - m_x*U.m_z, m_x*U.m_y - m_y*U.m_x);
+            	return result; 
+            };
             T length() const { return std::sqrt(m_x*m_x + m_y*m_y + m_z*m_z); };
             T lengthSquared() const { return (m_x*m_x + m_y*m_y + m_z*m_z); };
 
