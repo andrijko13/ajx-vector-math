@@ -169,7 +169,7 @@ namespace ajx {
             T z() { return m_z; };
             T dot(const vec3d<T> &U) const { return (m_x * U.m_x + m_y * U.m_y + m_z * U.m_z); };
             //cross will return another vector
-            vec3d<T> cross(const vec3d<T> &U) const { 
+            vec3d<T> cross(const vec3d<T> &U) const {
             	vec3d<T> result(m_y*U.m_z - m_z*U.m_y, m_z*U.m_x - m_x*U.m_z, m_x*U.m_y - m_y*U.m_x);
             	return result; 
             };
@@ -183,6 +183,15 @@ namespace ajx {
             	myvec /= veclength;
             	return myvec;
             };
+
+            vec3d<T> rotateAboutAxis(const double &angle, const vec3d<T> &N)
+            {
+            	vec3d<T> normal = N;
+            	normal.normalized();
+            	vec3d<T> R(this->m_x, this->m_y, this->m_z);
+            	vec3d<T> newVec = (normal * (cos(angle)) + ((R.cross(normal)) * (sin(angle))));
+            	return newVec;
+            }
 
 
 
