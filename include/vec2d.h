@@ -111,7 +111,7 @@ namespace ajx {
 		    	return *this;
 		    };
 
-		    vec2d<T> operator *(const T& val) {
+		    vec2d<T> operator *(const T& val) const {
 		    	vec2d<T> result(this->m_x * val, this->m_y *val);
 		    	return result;
 		    }
@@ -135,7 +135,7 @@ namespace ajx {
 		    	return *this;
 		    }
 
-		    vec2d<T> operator /(const T& val) {
+		    vec2d<T> operator /(const T& val) const {
 		    	vec2d<T> result(this->m_x / val, this->m_y / val);
 		    	return result;
 		    }
