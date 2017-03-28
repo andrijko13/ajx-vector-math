@@ -164,6 +164,35 @@ BOOST_AUTO_TEST_CASE( modulus_equals )
   BOOST_CHECK(first.z() == 5);
 }
 
+BOOST_AUTO_TEST_CASE( plusplus )
+{
+  ajx::vec3d<int> first(0,-1, 2);
+  first++;
+
+  BOOST_CHECK(first.x() == 1);
+  BOOST_CHECK(first.y() == 0);
+  BOOST_CHECK(first.z() == 3);
+}
+
+BOOST_AUTO_TEST_CASE( minusminus )
+{
+  ajx::vec3d<int> first(0,-1, -10);
+  first--;
+
+  BOOST_CHECK(first.x() == -1);
+  BOOST_CHECK(first.y() == -2);
+  BOOST_CHECK(first.z() == -11);
+}
+
+BOOST_AUTO_TEST_CASE ( dot )
+{
+  ajx::vec3d<int> first(10,10,10);
+  ajx::vec3d<int> second(20,20,20);
+  int result = first.dot(second);
+
+  BOOST_CHECK(result == 600);
+}
+
 BOOST_AUTO_TEST_CASE( cross )
 {
   ajx::vec3d<int> vec1(1,5,1);
