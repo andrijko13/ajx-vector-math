@@ -193,6 +193,36 @@ namespace ajx {
             	return newVec;
             }
 
+            vec3d<T> absoluteValue()
+            {
+            	vec3d<T> myvec(this->m_x, this->m_y, this->m_z);
+            	if(this->m_x < 0)
+            		myvec.m_x *= -1;
+            	if(this->m_y < 0)
+            		myvec.m_y *= -1;
+            	if(this->m_z < 0)
+            		myvec.m_z *= -1;
+            	return myvec;
+            }
+
+            T magnitude()
+            {
+            	return std::sqrt((this->m_x *= this->m_x) + (this->m_y *= this->m_y) + (this->m_z *= this->m_z));
+            }
+
+            T angleBetween(const vec3d<T> &Vec)
+            {
+            	vec3d<T> myvec(this->m_x, this->m_y, this->m_z);
+            	vec3d<T> a = myvec; vec3d<T> b = Vec;
+            	double numerator = a.dot(b);
+            	a = myvec; b = Vec;
+            	T d_1 = a.magnitude();
+            	T d_2 = b.magnitude();
+            	double denominator = d_1 * d_2;
+            	T result = numerator / denominator;
+            	return acos(result);
+            }
+
 
 
         protected:
