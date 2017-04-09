@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE( constructors_and_getters )
 	ajx::vec2d<long long> vec3;
 	ajx::vec2d<double> vec4;
   ajx::vec2d<int> vec5(10, 20);
-
+  
   BOOST_CHECK(vec1.x() == vec2.x());
   BOOST_CHECK(vec2.x() == vec3.x());
   BOOST_CHECK(vec1.y() == vec2.y());
