@@ -1,5 +1,6 @@
 #include "vec2d.h"
 #include "vec3d.h"
+#include "matrix2d.h"
 #include <iostream>
 
 int main(int argc, char **argv) {
