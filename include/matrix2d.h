@@ -32,10 +32,15 @@ namespace ajx {
 
    			};
 
-   			// void ZeroLeftCol()
-   			// {
-   			// 	this->col1(0,0);
-   			// }
+   			void ZeroLeftCol()
+   			{
+   				this->col1 = this->col1 * 0;
+   			}
+
+        void ZeroRightCol()
+        {
+          this->col2 = this->col2 * 0;
+        }
 
         bool operator==(const matrix2d<T>& x) const {
           if (this->col1 != x.col1) return false;
