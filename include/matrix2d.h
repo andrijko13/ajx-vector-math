@@ -13,13 +13,13 @@ namespace ajx {
         public:
 
       	matrix2d() {
-      		col1(0,0);
-      		col2(0,0);
+      		col1 = ajx::vec2d<T>::VectorWith(0, 0);
+          col2 = ajx::vec2d<T>::VectorWith(0, 0);
       	};
 
-      	matrix2d(T t1, T t2, T t3, T t4) {
-  				col1(t1,t2);
-  				col2(t3,t4);
+      	matrix2d(const T &t1,const T &t2,const T &t3,const T &t4) {
+  				col1 = ajx::vec2d<T>::VectorWith(t1, t2);
+          col2 = ajx::vec2d<T>::VectorWith(t3, t4);
  			  };
 
    			matrix2d(const ajx::vec2d<T> &v1, const ajx::vec2d<T> &v2)
@@ -42,14 +42,26 @@ namespace ajx {
           this->col2 = this->col2 * 0;
         }
 
+        void Transpose()
+        {
+          T temp = this->col1.y();
+          this->col1 = ajx::vec2d<T>::VectorWith(col1.x(), col2.x());
+          this->col2 = ajx::vec2d<T>::VectorWith(temp, col2.y());
+        }
+
         bool operator==(const matrix2d<T>& x) const {
           if (this->col1 != x.col1) return false;
           if (this->col2 != x.col2) return false;
           return true;
         };
 
-        T x() const { return col1.x();}
-        T y() const { return col2.y();}
+        matrix2d<T>& operator+=(const matrix2d<T>&x)
+        {
+          this->col1 += x.col1;
+          this->col2 += x.col2;
+          return *this;
+        }
+
         vec2d<T> column1() const { return col1;}
         vec2d<T> column2() const { return col2;}
 
