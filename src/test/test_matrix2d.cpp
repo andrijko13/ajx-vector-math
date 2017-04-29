@@ -91,3 +91,41 @@ BOOST_AUTO_TEST_CASE( plus_equals)
 	BOOST_CHECK(matrix1.column2().x() == 7);
 	BOOST_CHECK(matrix1.column2().y() == 12);
 }
+
+BOOST_AUTO_TEST_CASE( minus_equals)
+{
+	ajx::matrix2d<int> matrix1(1,3,8,4);
+	ajx::matrix2d<int> matrix2(7,6,5,8);
+
+	matrix1 -= matrix2;
+
+	BOOST_CHECK(matrix1.column1().x() == -6);
+	BOOST_CHECK(matrix1.column1().y() == -3);
+	BOOST_CHECK(matrix1.column2().x() == 3);
+	BOOST_CHECK(matrix1.column2().y() == -4);
+}
+
+BOOST_AUTO_TEST_CASE( times_equals)
+{
+	ajx::matrix2d<int> matrix1(1,3,2,4);
+	ajx::matrix2d<int> matrix2(4,6,5,7);
+
+	matrix1 *= matrix2;
+
+	BOOST_CHECK(matrix1.column1().x() == 16);
+	BOOST_CHECK(matrix1.column1().y() == 36);
+	BOOST_CHECK(matrix1.column2().x() == 19);
+	BOOST_CHECK(matrix1.column2().y() == 43);
+}
+
+BOOST_AUTO_TEST_CASE( ToThePowerOf )
+{
+	ajx::matrix2d<int> matrix1(1,3,2,4);
+
+	matrix1.ToThePowerOf(3);
+
+	BOOST_CHECK(matrix1.column1().x() == 37);
+	BOOST_CHECK(matrix1.column1().y() == 81);
+	BOOST_CHECK(matrix1.column2().x() == 54);
+	BOOST_CHECK(matrix1.column2().y() == 118);
+}

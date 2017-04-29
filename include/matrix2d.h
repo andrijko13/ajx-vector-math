@@ -62,6 +62,34 @@ namespace ajx {
           return *this;
         }
 
+        matrix2d<T>& operator-=(const matrix2d<T>& x) {
+          this->col1 -= x.col1;
+          this->col2 -= x.col2;
+          return *this;
+        };
+
+        matrix2d<T>& operator*=(const matrix2d<T>& x)
+        {
+          T m11 = (this->col1.x() * x.col1.x()) + (this->col2.x() * x.col1.y());
+          T m12 = (this->col1.x() * x.col2.x()) + (this->col2.x() * x.col2.y());
+          T m21 = (this->col1.y() * x.col1.x()) + (this->col2.y() * x.col1.y());
+          T m22 = (this->col1.y() * x.col2.x()) + (this->col2.y() * x.col2.y());
+          this->col1 = ajx::vec2d<T>::VectorWith(m11, m21);
+          this->col2 = ajx::vec2d<T>::VectorWith(m12, m22);
+          return *this;
+        }
+
+        matrix2d<T>& ToThePowerOf(const T& x)
+        {
+          const matrix2d<T> myVal(this->col1, this->col2);
+          for (int i = 0; i < x-1; i++)
+          {
+            *this *= myVal;
+          }
+          return *this;
+        }
+
+
         vec2d<T> column1() const { return col1;}
         vec2d<T> column2() const { return col2;}
 
