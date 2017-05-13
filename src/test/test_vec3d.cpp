@@ -216,3 +216,32 @@ BOOST_AUTO_TEST_CASE( rotateAboutAxis )
   BOOST_CHECK(ajx::approx(vec1.y(), 0.0));
   BOOST_CHECK(ajx::approx(vec1.z(), -1.0));
 }
+
+BOOST_AUTO_TEST_CASE( absolute_value)
+{
+  ajx::vec3d<int> vec(-2,2,-1);
+
+  vec = vec.absoluteValue();
+
+  BOOST_CHECK(vec.x() == 2);
+  BOOST_CHECK(vec.y() == 2);
+  BOOST_CHECK(vec.z() == 1);
+}
+
+BOOST_AUTO_TEST_CASE(magnitude)
+{
+  ajx::vec3d<double> vec(-2,2,2);
+  double mag = vec.magnitude();
+
+  BOOST_CHECK(ajx::approx(mag, 3.464101615));
+}
+
+BOOST_AUTO_TEST_CASE( angleVectors )
+{
+  ajx::vec3d<double> vec1(-2,2,2);
+  ajx::vec3d<double> vec2(0,2,2);
+
+  double angle = vec1.angleBetween(vec2);
+
+  BOOST_CHECK(ajx::approx(angle, .615479708));
+}
